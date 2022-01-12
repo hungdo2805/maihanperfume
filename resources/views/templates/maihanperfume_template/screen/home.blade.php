@@ -2,6 +2,9 @@
 /*
 $layout_page = home
 */ 
+/*
+hung
+*/ 
 @endphp
 
 @extends($sc_templatePath.'.layout')
