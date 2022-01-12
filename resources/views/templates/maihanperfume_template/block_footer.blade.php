@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="footer_area">
   <div class="container">
       <div class="footer_top">
@@ -57,3 +58,5 @@
       </div>
   </div>
 </div>
+=======
+>>>>>>> Stashed changes

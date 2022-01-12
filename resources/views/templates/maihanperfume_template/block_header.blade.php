@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <header class="header_area">
   <div class="container-fluid p-0">
       <!--header top start--> 
@@ -82,3 +83,5 @@
       <!--header bottom end-->   
   </div>  
 </header>
+=======
+>>>>>>> Stashed changes

@@ -2,12 +2,7 @@
 /*
 $layout_page = home
 */ 
-/*
-hung
-=======================LONG DEV
-*/ 
 @endphp
-
 @extends($sc_templatePath.'.layout')
 @php
 $productsNew = $modelProduct->start()->getProductLatest()->setlimit(sc_config('product_top'))->getData();
