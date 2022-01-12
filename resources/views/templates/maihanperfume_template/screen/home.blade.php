@@ -4,6 +4,7 @@ $layout_page = home
 */ 
 /*
 hung
+=======================LONG DEV
 */ 
 @endphp
 
