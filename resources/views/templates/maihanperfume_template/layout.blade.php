@@ -1,122 +1,609 @@
-@if (sc_store('active') == '1'  || (sc_store('active') == '0' && auth()->guard('admin')->user()))
-        {{-- Admin logged can view the website content under maintenance --}}
-    @if (sc_store('active') == '0' && auth()->guard('admin')->user())
-        @include($sc_templatePath . '.maintenance_note')
-    @endif
-<!DOCTYPE html>
-<html class="wide wow-animation" lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700%7CLato%7CKalam:300,400,700">
-    <meta name="description" content="{{ $description??sc_store('description') }}">
-    <meta name="keyword" content="{{ $keyword??sc_store('keyword') }}">
-    <title>{{$title??sc_store('title')}}</title>
-    <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png" sizes="16x16">
-    <meta property="og:image" content="{{ !empty($og_image)?asset($og_image):asset('images/org.jpg') }}" />
-    <meta property="og:url" content="{{ \Request::fullUrl() }}" />
-    <meta property="og:type" content="Website" />
-    <meta property="og:title" content="{{ $title??sc_store('title') }}" />
-    <meta property="og:description" content="{{ $description??sc_store('description') }}" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Beeta - Multipurpose eCommerce Bootstrap 4 Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.png">
+		
+		<!-- all css here -->
+      
 
-    <!-- css default for item s-cart -->
-    @include($sc_templatePath.'.common.css')
-    <!--//end css defaut -->
 
-    <!--Module meta -->
-    @isset ($sc_blocksContent['meta'])
-    @foreach ( $sc_blocksContent['meta'] as $layout)
-    @php
-    $arrPage = explode(',', $layout->page)
-    @endphp
-    @if ($layout->page == '*' || (isset($layout_page) && in_array($layout_page, $arrPage)))
-    @if ($layout->type =='html')
-    {!! $layout->text !!}
-    @endif
-    @endif
-    @endforeach
-    @endisset
-    <!--//Module meta -->
-    <!-- css default for item s-cart -->
-    <!--//end css defaut -->
+    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/assets/css/bundle.css')}}">
+    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/assets/css/plugins.css')}}">
+    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/assets/css/responsive.css')}}">
 
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/fonts.css')}}">
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/style.css')}}">
-    <style>
-        {!! sc_store_css() !!}
-    </style>
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-    @stack('styles')
-  </head>
-<body>
-    <div class="ie-panel">
-        <a href="http://windows.microsoft.com/en-US/internet-explorer/">
-            <img src="{{ asset($sc_templateFile.'/images/ie8-panel/warning_bar_0000_us.jpg')}}" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
-        </a>
-    </div>
+   
 
-    <div class="page">
-        {{-- Block header --}}
-        @section('block_header')
-        @include($sc_templatePath.'.block_header')
-        @show
-        {{--// Block header --}}
+    </head>
+    <body>
+            <!-- Add your site or application content here -->
+            
+            <!--header area start-->
+            @include($sc_templatePath.'.block_header')
+            <!--header area end-->
+             
+            <!--slider area start-->
+            <div class="slider_area">
+                <div class="slider_active owl-carousel">
+                    <div class="single_slider" style="background: url({{ asset($sc_templateFile.'/assets/img/slider/slider1.jpg')}}) center center / cover no-repeat scroll;">
+                        <div class="container-fluid p-0">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <div class="slider_content">
+                                        <h4>TINH DẦU NƯỚC HOA DUBAI</h4>
+                                        <a href="#">Cửa hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_slider" style="background: url(./assets/img/slider/slider2.jpg) center center / cover no-repeat scroll;">
+                        <div class="container-fluid">
+                            <div class="row align-items-center p-0">
+                                <div class="col-12">
+                                    <div class="slider_content">
+                                        <h4>TINH DẦU NƯỚC HOA DUBAI</h4>
+                                        <a href="#">Cửa hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!--slider area end--> 
+            <!--new product start--> 
+            <div class="new_product_area product_two">
+                <div class="container-fluid">
+                    <div class="section_title">
+                        <div class="row">
+                           <div class="col-12">
+                               <h2>Sản phẩm mới nhất</h2>
+                           </div> 
+                        </div>
+                    </div>    
+                    <div class="row">
+                        <div class="product_active_two owl-carousel">
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                        <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                        <div class="sale_percent">
+                                            <span>-4%</span>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">  
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use2.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                                <span class="old_price">980000 VND</span>
+                                            </div>
 
-        {{-- Block top --}}
-        @section('block_top')
-        @include($sc_templatePath.'.block_top')
-        @show
-        {{-- //Block top --}}
+                                        </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="current_price">850.000 VND</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                            </div>
 
-        {{-- Block main --}}
-        @section('block_main')
-        <section class="section section-xxl bg-default text-md-left">
-            <div class="container">
-                <div class="row row-50">
-                    @section('block_main_content')
-                    @include($sc_templatePath.'.block_main_content_left')
-                    @include($sc_templatePath.'.block_main_content_center')
-                    @include($sc_templatePath.'.block_main_content_right')
-                    @show
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a>
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="current_price">850.000 VND</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a>
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div> 
+                                    </div>
+                                     <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>  
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                                <span class="old_price">980000 VND</span>
+                                            </div>
+
+                                        </div>
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+            <!--new product start-->
+            
+            <!--countdown section start--> 
+            <div class="countdown_product countdown_two">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="product_thumb countdown">
+                                <a href="single-product.html"><img class="sale-product" src="./assets/img/product/product_use.jpg" alt=""></a>
+                                <div class="sale_percent">
+                                    <span>-4%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="countdown_product_content">
+                                <div class="product_name">
+                                    <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                </div>
+                                <div class="product_ratting">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product_price">
+                                    <span class="current_price">850.000 VND</span>
+                                    <span class="old_price">980000 VND</span>
+                                </div>
+                                <div class="product_desc">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique saepe consectetur possimus perferendis, accusantium.</p>
+                                </div>
+                                <div class="product_timing">
+                                    <div data-countdown="2022/12/15"></div>
+                                </div>
+                                <div class="product_button">
+                                    <a href="#" data-bs-toggle="tooltip" data-placement="top" title="add to cart">add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        @show
-        {{-- //Block main --}}
+            <!--countdown section end-->
+             
+            <!--Trending product start--> 
+            <div class="new_product_area product_two">
+                <div class="container-fluid">
+                    <div class="section_title">
+                        <div class="row">
+                           <div class="col-12">
+                               <h2>Sản phẩm bán chạy</h2>
+                           </div> 
+                        </div>
+                    </div>    
+                    <div class="row">
+                        <div class="product_active_two owl-carousel">
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                        <div class="product_action">
+                                            
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                        <div class="sale_percent">
+                                            <span>-4%</span>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">  
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                            </div>
 
-        @yield('news')
+                                        </div>    
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use2.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                                <span class="old_price">980000 VND</span>
+                                            </div>
 
-        {{-- Block bottom --}}
-        @section('block_bottom')
-        @include($sc_templatePath.'.block_bottom')
-        @show
-        {{-- //Block bottom --}}
+                                        </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="current_price">850.000 VND</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a> 
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                            </div>
 
-        {{-- Block footer --}}
-        @section('block_footer')
-        @include($sc_templatePath.'.block_footer')
-        @show
-        {{-- //Block footer --}}
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a>
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="current_price">850.000 VND</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                       <a href="single-product.html"><img src="./assets/img/product/product_use.jpg" alt=""></a>
+                                       <div class="product_action">
+                                           <ul>
+                                            <li><a href="#">+Thêm giỏ hàng</a></li>
+                                            <li><a href="#" title="So sánh"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Thêm yêu thích"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Xem sản phẩm"><i class="fa fa-eye"></i></a></li>
+                                           </ul>
+                                        </div> 
+                                    </div>
+                                     <div class="product_content">
+                                        <div class="product_name">
+                                            <h2><a href="single-product.html">Nước hoa Nữ Dubai Mazaaji EDP </a></h2>
+                                        </div>  
+                                        <div class="product_meta">    
+                                            <div class="product_price">
+                                                <span class="current_price">850.000 VND</span>
+                                                <span class="old_price">980000 VND</span>
+                                            </div>
 
-    </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+            <!--Trending product start-->
 
-    <div id="sc-loading">
-        <div class="sc-overlay"><i class="fa fa-spinner fa-pulse fa-5x fa-fw "></i></div>
-    </div>
+            <!--newsletter area start-->
+            <div class="newsletter_area" style="background:#FFD2D9">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="newsletter_content">
+                                <h2>Đăng kí để nhận những ưu đãi mới nhất từ shop<br>Sales đến 70%!</h2>
+                                <p>Đăng ký danh sách gửi thư Beta để nhận thông tin cập nhật về hàng mới, ưu đãi đặc biệt và thông tin giảm giá khác.</p>
+                                <form action="#">
+                                    <input placeholder="Email của bạn" type="text">
+                                    <button type="submit">Đăng kí</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            <!--newsletter area end-->
+            
+            <!--blog area start-->
+            <div class="blog_area">
+                <div class="container">
+                    <div class="section_title">
+                        <div class="row">
+                           <div class="col-12">
+                               <h2>Bài viết mới nhất</h2>
+                           </div> 
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="blog_active owl-carousel">
+                            <div class="col-lg-4">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="./assets/img/blog/blog_use.jpg" alt=""></a>
+                                    </div>
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h3><a href="blog-details.html">Ưu và Nhược điểm tinh dầu nước hoa Dubai chính hãng</a></h3>
+                                        </div>
+                                        <div class="blog_meta">
+                                            <i class="fa-calendar fa"></i>
+                                            <span class="post_date">october 10, 2022</span>
+                                        </div>
+                                        <div class="blog_desc">
+                                            <p>Tinh dầu nước hoa dubai là sản phẩm nước hoa từ Dubai do chính người dân nơi đây điều chế từ tinh dầu và nước cất...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="./assets/img/blog/blog_use.jpg" alt=""></a>
+                                    </div>
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h3><a href="blog-details.html">Tinh dầu nước hoa Dubai giá bao nhiêu? có đắt không?</a></h3>
+                                        </div>
+                                        <div class="blog_meta">
+                                            <i class="fa-calendar fa"></i>
+                                            <span class="post_date">october 10, 2018</span>
+                                        </div>
+                                        <div class="blog_desc">
+                                            <p>Tinh dầu nước hoa Dubai tại HT Market là dòng nước hoa nổi tiếng với mùi hương siêu quyến rũ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="./assets/img/blog/blog_use.jpg" alt=""></a>
+                                    </div>
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h3><a href="blog-details.html"></a>Tinh dầu nước hoa Dubai hot nhất hiện nay</a></h3>
+                                        </div>
+                                        <div class="blog_meta">
+                                            <i class="fa-calendar fa"></i>
+                                            <span class="post_date">october 10, 2018</span>
+                                        </div>
+                                        <div class="blog_desc">
+                                            <p>Đừng bỏ lỡ 1 chai tinh dầu nước hoa Dubai hot nhất hiện nay!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="./assets/img/blog/blog_use.jpg" alt=""></a>
+                                    </div>
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h3><a href="blog-details.html">Post with Video</a></h3>
+                                        </div>
+                                        <div class="blog_meta">
+                                            <i class="fa-calendar fa"></i>
+                                            <span class="post_date">october 10, 2018</span>
+                                            <span class="comment"> <a href="#">3  comments</a></span>
+                                        </div>
+                                        <div class="blog_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="./assets/img/blog/blog_use.jpg" alt=""></a>
+                                    </div>
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h3><a href="blog-details.html">Maecenas ultricies</a></h3>
+                                        </div>
+                                        <div class="blog_meta">
+                                            <i class="fa-calendar fa"></i>
+                                            <span class="post_date">october 10, 2018</span>
+                                            <span class="comment"> <a href="#">3  comments</a></span>
+                                        </div>
+                                        <div class="blog_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--blog area end-->
+                      
+            <!--footer area start-->
+            @include($sc_templatePath.'.block_footer')
+            <!--footer area end-->
+            
+        
+           
+		
+		<!-- all js here -->
 
-    <script src="{{ asset($sc_templateFile.'/js/core.min.js')}}"></script>
-    <script src="{{ asset($sc_templateFile.'/js/script.js')}}"></script>
-    <!-- js default for item s-cart -->
-    @include($sc_templatePath.'.common.js')
-    <!--//end js defaut -->
-    @stack('scripts')
-
-</body>
+        <script src="{{ asset($sc_templateFile.'/assets/js/vendor/jquery-3.4.1.min.js')}}"></script>
+        <script src="{{ asset($sc_templateFile.'/assets/js/vendor/modernizr-3.7.1.min.js')}}"></script>
+      
+        <script src="{{ asset($sc_templateFile.'/assets/js/plugins.js')}}"></script>
+        <script src="{{ asset($sc_templateFile.'/assets/js/main.js')}}"></script>
+    </body>
 </html>
-
-@else
-    @include($sc_templatePath . '.maintenance')
-@endif
