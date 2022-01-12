@@ -596,7 +596,7 @@
             <!--footer area end-->
             
         
-           
+           <!--hung area end-->
 		
 		<!-- all js here -->
 
