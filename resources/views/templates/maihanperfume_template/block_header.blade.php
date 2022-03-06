@@ -1,67 +1,38 @@
-<<<<<<< Updated upstream
+
 <header class="header_area">
-  <div class="container-fluid p-0">
-      <!--header top start--> 
-      <div class="header_top">
-          <div class="row align-items-center no-gutters">
-              <div class="col-lg-6 col-md-6">
-                  <div class="welcome_text">
-                      <p><strong>Mai Hân Perfume:</strong>Nước hoa đẳng cáp Châu Âu</p>
-                  </div>
-              </div>
-              <div class="col-lg-6 col-md-6">
-                  <div class="right_info text-right">
-                      <ul>
-                          <li class="currency"><a href="#">VND <i class="fa fa-angle-down"></i></a>
-                              <ul class="dropdown_currency">
-                                  <li><a href="#"> USD</a></li>
-                              </ul>     
-                          </li> 
-                          <li class="language"><a href="#"> Vietnam  <i class="fa fa-angle-down"></i></a>
-                              <ul class="dropdown_language">
-                                  <li><a href="#">English</a></li>
-                              </ul> 
-                          </li> 
-                          <li class="top_links"><a href="#">Tài khoản<i class="fa fa-angle-down"></i></a>
-                              <ul class="dropdown_links">
-                                  <li><a href="login.html">Đăng nhập</a></li>
-                              </ul>
-                          </li> 
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>      
-      <!--header top end-->
-      
+  <div class="container-fluid p-0">  
       <!--header bottom start--> 
       <div class="header_bottom sticky-header">
           <div class="row align-items-center">
               <div class="col-lg-2">
                   <div class="logo">
-                      <a href="index.html"><img src="./assets/img/logo/logo.png" alt=""></a>
+                      <a href="{{ sc_route('home') }}" style="font-size: 20px;font-weight: bold;color: #000;">{{ sc_store('title') }}</a>
                   </div>
               </div>
               <div class="col-lg-6">
                   <div class="main_menu_inner">
                       <div class="main_menu d-none d-lg-block"> 
                           <ul>
-                              <li class="active"><a href="index.html">Trang chủ</a></li>
-                              <li><a href="about.html">Giới thiệu</a></li>
-                              <li><a href="shop.html">Cửa hàng</a></li>
-                              <li><a href="blog.html">Tin tức</a></li>
-                              <li><a href="contact.html">Liên hệ</a></li>
+                              <li class="@yield('menu1')"><a href="{{ sc_route('home') }}">Trang chủ</a></li>
+                              <li  class="@yield('menu2')"><a href="{{ url('about.html') }}">Giới thiệu</a></li>
+                              <li  class="@yield('menu3')"><a href="{{ sc_route('shop') }}">Cửa hàng</a></li>
+                              <li  class="@yield('menu4')"><a href="{{ sc_route('news') }}">Tin tức</a></li>
+                              <li  class="@yield('menu5')"><a href="{{ sc_route('contact') }}">Liên hệ</a></li>
+
+                             
                           </ul>
 
                       </div>
                       <div class="mobile-menu d-lg-none">
                           <nav>  
                               <ul>
-                                  <li class="active"><a href="index.html">Trang chủ</a></li>
-                                  <li><a href="about.html">Giới thiệu</a></li>
-                                  <li><a href="shop.html">Cửa hàng</a></li>
-                                  <li><a href="blog.html">Tin tức</a></li>
-                                  <li><a href="contact.html">Liên hệ</a></li>
+                                <li class="active"><a href="{{ sc_route('home') }}">Trang chủ</a></li>
+                                <li><a href="{{ url('about.html') }}">Giới thiệu</a></li>
+                                <li><a href="{{ sc_route('shop') }}">Cửa hàng</a></li>
+                                <li><a href="{{ sc_route('news') }}">Tin tức</a></li>
+                                <li><a href="{{ sc_route('contact') }}">Liên hệ</a></li>
+
+                                
                               </ul>
                           </nav>      
                       </div>
@@ -69,12 +40,12 @@
               </div>
               <div class="col-lg-4">
                   <div class="search_area">
-                      <form action="#">
-                          <input placeholder="Tìm kiếm sản phẩm..." type="text">
+                      <form  action="{{ sc_route('search') }}" method="GET">
+                          <input placeholder="Tìm kiếm sản phẩm..." type="text" name="keyword" required>
                           <button type="submit"><i class="fa fa-search"></i></button>
                       </form>
                       <div class="shopping_cart">
-                          <a href="#"><i class="fa fa-shopping-bag"></i><span> 2 sản phẩm</span></a>
+                          <a href="{{ sc_route('cart') }}"><i class="fa fa-shopping-bag"></i><span class="sc-cart"> {{ Cart::instance('default')->count() }}</span><span>sản phẩm</span></a>
                       </div>  
                   </div>
               </div>
@@ -83,5 +54,3 @@
       <!--header bottom end-->   
   </div>  
 </header>
-=======
->>>>>>> Stashed changes

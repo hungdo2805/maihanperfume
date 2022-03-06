@@ -15,7 +15,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
 
 @extends($sc_templatePath.'.layout')
 
-@section('block_main')
+@section('content')
 <section class="section section-xl bg-default text-md-left">
     <div class="container">
         <div class="row">
@@ -64,9 +64,9 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
                                         <a href="{{$product->getUrl() }}"><img width="100"
                                                 src="{{asset($product->getImage())}}" alt=""></a>
                                     </td>
-                                    <td>{!! $product->showPrice() !!}</td>
+                                    <td>{{ number_format($product->getFinalPrice()) }} VNĐ</td>
                                     <td>{{$item->qty}}</td>
-                                    <td align="right">{{sc_currency_render($item->subtotal)}}</td>
+                                    <td align="right">{{sc_currency_render($item->subtotal)}} VNĐ</td>
                                 </tr>
                                 {{--// Render product in cart --}}
 
@@ -172,7 +172,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h3 class="control-label"><i class="fas fa-credit-card"></i>
+                                                <h3 class="control-label"><i class="fa fa-credit-card"></i>
                                                     {{ trans('cart.payment_method') }}:<br></h3>
                                             </div>
                                             <div class="form-group">
@@ -198,13 +198,13 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-md-12 text-center">
                                     <div class="pull-left">
-                                        <button class="button button-lg" type="button"
+                                        <button class="button button-lg button-style3" type="button"
                                             style="cursor: pointer;padding:10px 30px"
                                             onClick="location.href='{{ sc_route('cart') }}'"><i
                                                 class="fa fa-arrow-left"></i> {{ trans('cart.back_to_cart') }}</button>
                                     </div>
                                     <div class="pull-right">
-                                        <button class="button button-lg button-secondary" id="submit-order" type="submit"
+                                        <button class="button button-lg button-secondary button-style3" id="submit-order" type="submit"
                                             style="cursor: pointer;padding:10px 30px"><i class="fa fa-check"></i> {{ trans('cart.confirm') }}</button>
                                     </div>
                                 </div>

@@ -15,8 +15,24 @@ $layout_page = shop_cart
 
 @extends($sc_templatePath.'.layout')
 
-@section('block_main')
-<section class="section section-xl bg-default text-md-left">
+@section('content')
+<section >
+    <!--breadcrumbs area start-->
+    <div class="breadcrumb-section cart_bread">
+        <div class="container">   
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{{ sc_route('home') }}">Trang chủ</a></li>
+                            <li class="active">Giỏ hàng</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!--breadcrumbs area end-->
     <div class="container">
         <div class="row">
             @if (count($cart) ==0)
@@ -32,7 +48,7 @@ $layout_page = shop_cart
                 <div class="table-responsive">
                     <table class="table box table-bordered">
                         <thead>
-                            <tr style="background: #eaebec">
+                            <tr style="background-color: #ee7be3;">
                                 <th style="width: 50px;">No.</th>
                                 <th style="width: 100px;">{{ trans('product.sku') }}</th>
                                 <th>{{ trans('product.name') }}</th>
@@ -157,7 +173,7 @@ $layout_page = shop_cart
                             {{--// Select address if customer login --}}
                             
                             {{-- Render address shipping --}}
-                            <table class="table table-borderless table-responsive">
+                            <table class="table table-borderless ">
                                 <tr width=100%>
                                     @if (sc_config('customer_lastname'))
                                         <td class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
@@ -260,10 +276,7 @@ $layout_page = shop_cart
                                             $ct = old('country',$shippingAddress['country']);
                                         @endphp
                                         <select class="form-control country " style="width: 100%;" name="country">
-                                            <option value="">__{{ trans('cart.country') }}__</option>
-                                            @foreach ($countries as $k => $v)
-                                            <option value="{{ $k }}" {{ ($ct ==$k) ? 'selected':'' }}>{{ $v }}</option>
-                                            @endforeach
+                                            <option value="VN">Việt Nam</option>
                                         </select>
                                         @if ($errors->has('country'))
                                             <span class="help-block">
@@ -481,7 +494,7 @@ $layout_page = shop_cart
                                 <div class="col-md-12 text-center">
                                     <div class="pull-right">
                                         {!! $viewCaptcha ?? ''!!}
-                                        <button class="button button-lg button-secondary" type="submit" id="button-form-process">{{ trans('cart.checkout') }}</button>
+                                        <button class="button button-lg button-secondary button-style3" type="submit" id="button-form-process">{{ trans('cart.checkout') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -497,13 +510,13 @@ $layout_page = shop_cart
 </section>
 
 {{-- Render include view --}}
-@if (!empty($layout_page && $includePathView = config('sc_include_view.'.$layout_page, [])))
+{{-- @if (!empty($layout_page && $includePathView = config('sc_include_view.'.$layout_page, [])))
 @foreach ($includePathView as $view)
   @if (view()->exists($view))
     @include($view)
   @endif
 @endforeach
-@endif
+@endif --}}
 {{--// Render include view --}}
 
 
@@ -658,6 +671,14 @@ $layout_page = shop_cart
 </script>
 @endpush
 
+
 @push('styles')
-{{-- Your css style --}}
+
+  <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/fonts.css')}}">
+  <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/style.css')}}">
+  <style>
+      {!! sc_store_css() !!}
+  </style>
+
 @endpush

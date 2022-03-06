@@ -9,28 +9,58 @@ Use paginate: $news->appends(request()->except(['page','_token']))->links()
 
 
 @extends($sc_templatePath.'.layout')
+@section('menu4')   active  @endsection
 
-@section('block_main')
+@section('content')
+
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumb-section about_bread">
+      <div class="container">   
+          <div class="row">
+              <div class="col-12">
+                  <div class="breadcrumb_content">
+                      <ul>
+                          <li><a href="{{ route('home') }}">Trang chủ</a></li>
+                          <li class="active">Tin tức</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>    
+    </div>
+  <!--breadcrumbs area end-->
+
+
+
 <section class="section section-xl bg-default">
     <div class="container">
       <div class="row row-30">
         @if ($news->count())
             @foreach ($news as $newsDetail)
-            <div class="col-sm-6 col-lg-4">
-                <!-- Post Classic-->
-                <article class="post post-classic box-md"><a class="post-classic-figure" href="{{ $newsDetail->getUrl() }}">
-                    <img src="{{ asset($newsDetail->getThumb()) }}" alt="" width="370" height="239"></a>
-                  <div class="post-classic-content">
-                    <div class="post-classic-time">
-                      <time datetime="{{ $newsDetail->created_at }}">{{ $newsDetail->created_at }}</time>
+              <div class="col-lg-4 col-sm-6 col-12">
+                <div class="single_blog">
+                    <div class="blog_thumb">
+                        <a href="{{ $newsDetail->getUrl() }}"><img src="{{ asset($newsDetail->getThumb()) }}" alt=""></a>
                     </div>
-                    <h5 class="post-classic-title"><a href="{{ $newsDetail->getUrl() }}">{{ $newsDetail->title }}</a></h5>
-                    <p class="post-classic-text">
-                        {{ $newsDetail->description }}
-                    </p>
-                  </div>
-                </article>
-              </div>
+                    <div class="blog_content">
+                        <div class="blog_title">
+                            <h3><a href="{{ $newsDetail->getUrl() }}">{{ $newsDetail->title }}</a></h3>
+                        </div>
+                        <div class="blog_meta">                                       
+                            <span class="post_date"><i class="fa-calendar fa"></i> {{ $newsDetail->created_at }}</span>
+                        </div>
+                        <div class="blog_desc">
+                            <p>
+                              {{ $newsDetail->description }}
+                            </p>
+                        </div>
+                        <div class="readmore_button">
+                            <a href="{{ $newsDetail->getUrl() }}">Đọc thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
             @endforeach
 
             <div class="pagination-wrap">

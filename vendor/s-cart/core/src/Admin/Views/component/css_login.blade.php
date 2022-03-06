@@ -168,7 +168,7 @@
     font-size: 15px;
     line-height: 1.2;
     color: black;
-    border:2px solid #f39c12;
+    border:2px solid #ee7be3;
     display: block;
     width: 100%;
     background: #fff;
@@ -187,7 +187,7 @@
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 0px 0px;
-    color: #f39c12;
+    color: #ee7be3;
   }
   
   .input100:focus + .focus-input100 {
@@ -257,7 +257,7 @@
     width: 50%;
     height: 50px;
     border-radius: 7px;
-    background: #f9710c;
+    background: #ee7be3;
     border: 2px solid #FFFFFF;
     display: -webkit-box;
     display: -webkit-flex;
@@ -286,10 +286,10 @@
     top: 0;
     left: 0;
     background: #005bea;
-    background: -webkit-linear-gradient(left, #bd7b28, #bd7b28);
-    background: -o-linear-gradient(left, #bd7b28, #bd7b28);
-    background: -moz-linear-gradient(left, #bd7b28, #bd7b28);
-    background: linear-gradient(left, #bd7b28, #bd7b28);
+    background: -webkit-linear-gradient(left, #ee7be3, #ee7be3);
+    background: -o-linear-gradient(left, #ee7be3, #ee7be3);
+    background: -moz-linear-gradient(left, #ee7be3, #ee7be3);
+    background: linear-gradient(left, #ee7be3, #ee7be3);
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;

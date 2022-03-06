@@ -8,7 +8,27 @@ $layout_page = shop_page
 
 @extends($sc_templatePath.'.layout')
 
-@section('block_main')
+@section('menu2')   active  @endsection
+
+@section('content')
+
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumb-section about_bread">
+      <div class="container">   
+          <div class="row">
+              <div class="col-12">
+                  <div class="breadcrumb_content">
+                      <ul>
+                        <li><a href="{{ route('home') }}">Trang chủ</a></li>
+                          <li class="active">Giới thiệu</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>    
+    </div>
+  <!--breadcrumbs area end-->
 <section class="section section-sm section-first bg-default text-md-left">
     <div class="container">
         <div class="row">

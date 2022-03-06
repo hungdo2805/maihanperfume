@@ -1,13 +1,12 @@
    <!-- Main Sidebar Container -->
    <aside class="main-sidebar sidebar-light-pink elevation-4 sidebar-no-expand">
     <!-- Brand Logo -->
-    <a href="{{ sc_route_admin('admin.home') }}" class="brand-link navbar-secondary"">
-      S-Cart
-      <span class="brand-text font-weight-light">Admin</span>
+    <a href="{{ sc_route_admin('admin.home') }}" class="brand-link navbar-pink">
+      <span style="color:#fff;">HaMaiPerfume</span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar {{ config($styleDefine.'.sidebar') }}">
+    <div class="sidebar {{ config($styleDefine.'.sidebar') }} sidebar-pink">
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">

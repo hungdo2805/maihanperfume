@@ -76,8 +76,9 @@
     @push('styles')
     <style type="text/css">
       .container-login100 {
-        background-image: url({!! asset('images/bg-system.jpg') !!});
+        background-image: url({{ asset($sc_templateFile.'/assets/img/slider/slider1.jpg')}});
       }
+      
     </style>
     @endpush
 
